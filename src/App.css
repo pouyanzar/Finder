@@ -1,0 +1,133 @@
+body {
+  background-color: moccasin;
+}
+
+.App {
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.App-logo {
+  -webkit-animation: App-logo-spin infinite 20s linear;
+          animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@-webkit-keyframes App-logo-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+.form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-bottom: 5px #F68F54 solid;
+  margin-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.form__label {
+  color: #F68F54;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.form__field {
+  width: 10rem;
+  height: 2rem;
+  margin-left: 0.5rem;
+  margin-right: 2rem;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: moccasin;
+  color: darkred;
+  border: 1px solid #F68F54;
+}
+
+.form__button {
+  background-color: darkred;
+  color: #ffffff;
+  width: 10rem;
+  height: 2rem;
+  font-weight: bold;
+  border-radius: 20px;
+}
+
+.part {
+  margin: 2.5rem auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.part__img {
+  width: 150px;
+  height: 150px;
+  -o-object-fit: content;
+     object-fit: content;
+  margin-bottom: 2.5rem;
+}
+
+.part__table td {
+  border: 1px #F68F54 solid;
+}
+/*# sourceMappingURL=App.css.map */
