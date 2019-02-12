@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "adminFinder",
-    "password": "QFP@)!*qfp2018",
-    "database": "quickfit_finder",
-    "host": "quickfitparts.com",
+    "username": "root",
+    "password": "root",
+    "database": "finder",
+    "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
@@ -14,10 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "adminFinder",
-    "password": "QFP@)!*qfp2018",
-    "database": "quickfit_finder",
-    "host": "quickfitparts.com",
+    "username": "root",
+    "password": "root",
+    "database": "finder",
+    "host": "localhost",
     "dialect": "mysql"
   }
 }
