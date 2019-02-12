@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "concurrently": "^4.1.0",
+    "cors": "^2.8.5",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-router-dom": "^4.3.1",
@@ -15,7 +16,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "heroku-postbuild": "npm install --only=dev && npm start"
-
   },
   "eslintConfig": {
     "extends": "react-app"
