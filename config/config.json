@@ -1,20 +1,20 @@
 {
   "development": {
-    "username": "adminFinder",
+    "username": "quickfit_adminFinder",
     "password": "QFP@)!*qfp2018",
     "database": "quickfit_finder",
     "host": "quickfitparts.com",
     "dialect": "mysql"
   },
   "test": {
-    "username": "adminFinder",
+    "username": "quickfit_adminFinder",
     "password": "QFP@)!*qfp2018",
     "database": "quickfit_finder",
     "host": "quickfitparts.com",
     "dialect": "mysql"
   },
   "production": {
-    "username": "adminFinder",
+    "username": "quickfit_adminFinder",
     "password": "QFP@)!*qfp2018",
     "database": "quickfit_finder",
     "host": "quickfitparts.com",
