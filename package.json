@@ -14,8 +14,7 @@
     "sequelize-cli": "^5.4.0"
   },
   "scripts": {
-    "start": "node index.js",
-    "heroku-postbuild": "cd Frontend && npm install --only=dev && npm install && npm run build"
+    "start": "node index.js"
   },
   "eslintConfig": {
     "extends": "react-app"
