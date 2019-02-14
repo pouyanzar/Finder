@@ -4,7 +4,7 @@ cors = require('cors'),
 Sequelize = require('sequelize'),
 Op = Sequelize.Op;
 
-app.use(express.static('public'));
+// app.use(express.static('public'));
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
@@ -16,6 +16,7 @@ const sequelize = new Sequelize('quickfit_finder', 'quickfit_adminFinder', 'QFP@
 },{
     timestamps: false
 })
+
 
 PORT = process.env.PORT || 8080,
 db = require('./models');
