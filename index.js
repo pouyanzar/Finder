@@ -23,9 +23,9 @@ app.use(cors());
         underscored: true // don't use camel case
       },
       dialect: 'mysql',
-      dialectOptions: {
-        ssl: true
-      },
+    //   dialectOptions: {
+    //     ssl: true
+    //   },
       logging: true,
       protocol: 'mysql',
       quoteIdentifiers: false // set case-insensitive
