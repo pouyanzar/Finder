@@ -22,10 +22,10 @@ const sequelize = new Sequelize('quickfit_finder', 'quickfit_adminFinder', 'QFP@
     //     freezeTableName: true, // don't make plural table names
     //     underscored: true // don't use camel case
     //   },
-    //   dialect: 'mysql',
-    // //   dialectOptions: {
-    // //     ssl: true
-    // //   },
+    //   dialect: 'mysql'
+    //   dialectOptions: {
+    //     ssl: true
+    //   },
     //   logging: true,
     //   protocol: 'mysql',
     //   quoteIdentifiers: false // set case-insensitive
