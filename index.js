@@ -16,7 +16,7 @@ app.use(cors());
 // },{
 //     timestamps: false
 // })
-if (process.env.DATABASE_URL) {
+// if (process.env.DATABASE_URL) {
     const sequelize = new Sequelize(process.env.DATABASE_URL, {
       define: {
         freezeTableName: true, // don't make plural table names
@@ -30,9 +30,9 @@ if (process.env.DATABASE_URL) {
       protocol: 'mysql',
       quoteIdentifiers: false // set case-insensitive
     });
-  } else {
-    console.log('Fatal error: DATABASE_URL not set');
-    process.exit(1);
+//   } else {
+//     console.log('Fatal error: DATABASE_URL not set');
+//     process.exit(1);
 
 PORT = process.env.PORT || 8080,
 db = require('./models');
