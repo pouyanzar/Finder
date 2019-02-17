@@ -10,26 +10,26 @@ app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 app.use(cors());
 
-// const sequelize = new Sequelize('quickfit_finder', 'quickfit_adminFinder', 'QFP@)!*qfp2018', {
-//     host:"quickfitparts.com",
-//     dialect: 'mysql'
-// },{
-//     timestamps: false
-// })
+const sequelize = new Sequelize('quickfit_finder', 'quickfit_adminFinder', 'QFP@)!*qfp2018', {
+    host:"quickfitparts.com",
+    dialect: 'mysql'
+},{
+    timestamps: false
+})
 // if (process.env.DATABASE_URL) {
-    const sequelize = new Sequelize('mysql://quickfit_adminFinder@quickfitparts.com:3306/quick_finder', {
-      define: {
-        freezeTableName: true, // don't make plural table names
-        underscored: true // don't use camel case
-      },
-      dialect: 'mysql',
-    //   dialectOptions: {
-    //     ssl: true
+    // const sequelize = new Sequelize('mysql://quickfit_adminFinder@quickfitparts.com:3306/quick_finder', {
+    //   define: {
+    //     freezeTableName: true, // don't make plural table names
+    //     underscored: true // don't use camel case
     //   },
-      logging: true,
-      protocol: 'mysql',
-      quoteIdentifiers: false // set case-insensitive
-    });
+    //   dialect: 'mysql',
+    // //   dialectOptions: {
+    // //     ssl: true
+    // //   },
+    //   logging: true,
+    //   protocol: 'mysql',
+    //   quoteIdentifiers: false // set case-insensitive
+    // });
 //   } else {
 //     console.log('Fatal error: DATABASE_URL not set');
 //     process.exit(1);

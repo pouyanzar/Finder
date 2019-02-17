@@ -3,21 +3,21 @@
     "username": "quickfit_adminFinder",
     "password": "QFP@)!*qfp2018",
     "database": "quickfit_finder",
-    "host": "quickfitparts.com",
+    "host": "decarie.web-dns1.com",
     "dialect": "mysql"
   },
   "test": {
     "username": "quickfit_adminFinder",
     "password": "QFP@)!*qfp2018",
     "database": "quickfit_finder",
-    "host": "quickfitparts.com",
+    "host": "decarie.web-dns1.com",
     "dialect": "mysql"
   },
   "production": {
     "username": "quickfit_adminFinder",
     "password": "QFP@)!*qfp2018",
     "database": "quickfit_finder",
-    "host": "quickfitparts.com",
+    "host": "decarie.web-dns1.com",
     "dialect": "mysql"
   }
 }
