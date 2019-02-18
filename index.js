@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 app.use(cors());
 
-const sequelize = new Sequelize('quickfit_finder', 'quickfit_adminFinder', 'QFP@)!*qfp2018', {
+const sequelize = new Sequelize('quickfit_finder', 'quickfit_adminFinder', 'HOO121p1364', {
     host:"quickfitparts.com",
     dialect: 'mysql'
 },{
