@@ -1,21 +1,21 @@
 {
   "development": {
     "username": "quickfit_adminFinder",
-    "password": "QFP@)!*qfp2018",
+    "password": "HOO121p1364",
     "database": "quickfit_finder",
     "host": "decarie.web-dns1.com",
     "dialect": "mysql"
   },
   "test": {
     "username": "quickfit_adminFinder",
-    "password": "QFP@)!*qfp2018",
+    "password": "HOO121p1364",
     "database": "quickfit_finder",
     "host": "decarie.web-dns1.com",
     "dialect": "mysql"
   },
   "production": {
     "username": "quickfit_adminFinder",
-    "password": "QFP@)!*qfp2018",
+    "password": "HOO121p1364",
     "database": "quickfit_finder",
     "host": "decarie.web-dns1.com",
     "dialect": "mysql"
