@@ -14,10 +14,6 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "quickfit_adminFinder",
-    "password": "HOO121p1364",
-    "database": "quickfit_finder",
-    "host": "decarie.web-dns1.com",
-    "dialect": "mysql"
+    "use_env_variable": "DATABASE_URL"
   }
 }
