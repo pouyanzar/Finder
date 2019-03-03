@@ -17,6 +17,15 @@ const sequelize = new Sequelize('d85d4q947826an', 'yahiniwwkmjyzs', '9c1a9cb5cb4
 },{
     timestamps: false
 })
+
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
 // if (process.env.DATABASE_URL) {
     // const sequelize = new Sequelize('mysql://quickfit_adminFinder@quickfitparts.com:3306/quick_finder', {
     //   define: {
