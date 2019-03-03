@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     relatedPart9: DataTypes.STRING,
     relatedPart10: DataTypes.STRING,
     img: DataTypes.STRING,
-    price: DataTypes.DOUBLE
+    price: DataTypes.FLOAT
   }, {
     underscored: true,
     timestamps:false
