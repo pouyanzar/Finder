@@ -123,7 +123,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       price: {
-        type: Sequelize.DOUBLE
+        type: Sequelize.FLOAT
       },
       created_at: {
         allowNull: true,
