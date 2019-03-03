@@ -39,8 +39,8 @@ PORT = process.env.PORT || 8080,
 db = require('./models');
 
 app.post('/make', (req,res)=>{
-
     const make = req.body.make;
+    console.log(make);
     sequelize.query(`SELECT DISTINCT model FROM finders WHERE make = '${make}'`,{type:sequelize.QueryTypes.SELECT})
     .then(models => res.json(models.map(model => model.model)))
 })
