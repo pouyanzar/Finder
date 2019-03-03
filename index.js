@@ -13,28 +13,13 @@ app.use(cors());
 const sequelize = new Sequelize('d85d4q947826an', 'yahiniwwkmjyzs', '9c1a9cb5cb41447bf6cec034c6c2124940296a6ca1f24c9d7aaf67b6db298444', {
     host:"ec2-54-243-223-245.compute-1.amazonaws.com",
     port:5423,
-    dialect: 'mysql'
+    dialect: 'postgres'
 },{
     timestamps: false
 })
 
-// sequelize
-//   .authenticate()
-//   .then(() => {
-//     console.log('Connection has been established successfully.');
-//   })
-//   .catch(err => {
-//     console.error('Unable to connect to the database:', err);
-//   });
 
-const pg = require('pg');
-pg.connect('d85d4q947826an', 'yahiniwwkmjyzs', '9c1a9cb5cb41447bf6cec034c6c2124940296a6ca1f24c9d7aaf67b6db298444', {
-    host:"ec2-54-243-223-245.compute-1.amazonaws.com",
-    port:5423,
-    dialect: 'mysql'
-},{
-    timestamps: false
-})
+
 PORT = process.env.PORT || 8080,
 db = require('./models');
 
