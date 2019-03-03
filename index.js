@@ -26,23 +26,6 @@ sequelize
   .catch(err => {
     console.error('Unable to connect to the database:', err);
   });
-// if (process.env.DATABASE_URL) {
-    // const sequelize = new Sequelize('mysql://quickfit_adminFinder@quickfitparts.com:3306/quick_finder', {
-    //   define: {
-    //     freezeTableName: true, // don't make plural table names
-    //     underscored: true // don't use camel case
-    //   },
-    //   dialect: 'mysql'
-    //   dialectOptions: {
-    //     ssl: true
-    //   },
-    //   logging: true,
-    //   protocol: 'mysql',
-    //   quoteIdentifiers: false // set case-insensitive
-    // });
-//   } else {
-//     console.log('Fatal error: DATABASE_URL not set');
-//     process.exit(1);
 
 PORT = process.env.PORT || 8080,
 db = require('./models');
