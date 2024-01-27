@@ -1,50 +1,41 @@
-// const knex = require("knex");
 const express = require("express"),
   app = express(),
   cors = require("cors"),
   Sequelize = require("sequelize"),
   Op = Sequelize.Op;
 
-// app.use(express.static('public'));
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
+var XLSX = require("xlsx");
 
-// const db = knex({
-//   client: "pg",
-//   connection: {
-//     host: "db.uzkqvbaxaxmxniermdvw.supabase.co",
-//     user: "postgres",
-//     password: "HOO121p1364",
-//     database: "postgres",
+var workbook = XLSX.readFile("Info.xlsx");
+
+// const sequelize = new Sequelize(
+//   "finder_rmta",
+//   "pouyan",
+//   "g4xpZdvpElrRWvVY7DuyJaBOuebjvMd2",
+//   {
+//     host: "dpg-cmq2rh821fec739jksq0-a",
 //     port: 5432,
+//     dialect: "postgres",
 //   },
-// });
-const sequelize = new Sequelize(
-  "finder_rmta",
-  "pouyan",
-  "g4xpZdvpElrRWvVY7DuyJaBOuebjvMd2",
-  {
-    host: "dpg-cmq2rh821fec739jksq0-a",
-    port: 5432,
-    dialect: "postgres",
-  },
-  {
-    timestamps: false,
-  }
-);
+//   {
+//     timestamps: false,
+//   }
+// );
 
 PORT = process.env.PORT || 8080;
 
 app.post("/make", (req, res) => {
   const make = req.body.make;
   console.log(make);
-  sequelize
-    .query(`SELECT DISTINCT model FROM finders WHERE make = '${make}'`, {
-      type: sequelize.QueryTypes.SELECT,
-    })
-    .then((models) => res.json(models.map((model) => model.model)));
+  for (const cl in workbook.Sheets["RAD"]) {
+    if (workbook.Sheets["RAD"][cl].v == make) {
+      res.json(workbook.Sheets["RAD"]["B" + cl.substring(1, 3)].v);
+    }
+  }
+  // .then((models) => res.json(models.map((model) => model.model)));
 });
 
 app.post("/part", (req, res) => {
@@ -52,16 +43,56 @@ app.post("/part", (req, res) => {
     model = req.body.model,
     category = req.body.category,
     year = req.body.year;
+  const parts = [];
+  for (const cl in workbook.Sheets[category]) {
+    if (workbook.Sheets[category][cl].v == make) {
+      if (workbook.Sheets[category]["B" + cl.substring(1, 3)].v == model) {
+        console.log(workbook.Sheets[category]["C" + cl.substring(1, 3)].v);
+        let years =
+          workbook.Sheets[category]["C" + cl.substring(1, 3)].v.split("-");
 
-  db.Finder.findAll({
-    where: {
-      make: make,
-      model: model,
-      category: category,
-      startYear: { [Op.lte]: year },
-      endYear: { [Op.gte]: year },
-    },
-  }).then((parts) => res.json(parts));
+        if (
+          Number(year) >= Number(years[0]) ||
+          Number(year) <= Number(years[1])
+        ) {
+          console.log(make, model, category, year);
+          parts.push({
+            make: workbook.Sheets[category][cl].v,
+            model: workbook.Sheets[category]["B" + cl.substring(1, 3)].v,
+            year: workbook.Sheets[category]["C" + cl.substring(1, 3)].v,
+            OEM: workbook.Sheets[category]["E" + cl.substring(1, 3)].v,
+            pic:
+              workbook.Sheets[category]["G1"].v.toLowerCase() == "pics"
+                ? workbook.Sheets[category]["G" + cl.substring(1, 3)].v
+                : null,
+            price:
+              workbook.Sheets[category]["H1"].v.toLowerCase() == "price"
+                ? workbook.Sheets[category]["H" + cl.substring(1, 3)].v
+                : null,
+          });
+          console.log({
+            make: workbook.Sheets[category][cl].v,
+            model: workbook.Sheets[category]["B" + cl.substring(1, 3)].v,
+            year: workbook.Sheets[category]["C" + cl.substring(1, 3)].v,
+            OEM: workbook.Sheets[category]["E" + cl.substring(1, 3)].v,
+            pic: workbook.Sheets[category]["G" + cl.substring(1, 3)].v,
+            price: workbook.Sheets[category]["H" + cl.substring(1, 3)].v,
+          });
+        }
+      }
+    }
+  }
+  console.log(JSON.stringify(parts));
+  res.json(JSON.stringify(parts));
+  // db.Finder.findAll({
+  //   where: {
+  //     make: make,
+  //     model: model,
+  //     category: category,
+  //     startYear: { [Op.lte]: year },
+  //     endYear: { [Op.gte]: year },
+  //   },
+  // }).then((parts) => res.json(parts));
 });
 
 app.post("/oem", (req, res) => {
