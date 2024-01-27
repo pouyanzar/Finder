@@ -29,12 +29,17 @@ PORT = process.env.PORT || 8080;
 
 app.post("/make", (req, res) => {
   const make = req.body.make;
-  console.log(make);
+  const models = [];
   for (const cl in workbook.Sheets["RAD"]) {
-    if (workbook.Sheets["RAD"][cl].v == make) {
-      res.json(workbook.Sheets["RAD"]["B" + cl.substring(1, 3)].v);
+    if (typeof workbook.Sheets["RAD"][cl].v === "string") {
+      if (workbook.Sheets["RAD"][cl].v.toLowerCase() === make.toLowerCase()) {
+        console.log(workbook.Sheets["RAD"]["B" + cl.substring(1, 3)].v);
+        models.push(workbook.Sheets["RAD"]["B" + cl.substring(1, 3)].v);
+      }
     }
   }
+  res.json(models);
+
   // .then((models) => res.json(models.map((model) => model.model)));
 });
 
