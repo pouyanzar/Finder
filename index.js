@@ -11,40 +11,27 @@ var XLSX = require("xlsx");
 
 var workbook = XLSX.readFile("Info.xlsx");
 
-// const sequelize = new Sequelize(
-//   "finder_rmta",
-//   "pouyan",
-//   "g4xpZdvpElrRWvVY7DuyJaBOuebjvMd2",
-//   {
-//     host: "dpg-cmq2rh821fec739jksq0-a",
-//     port: 5432,
-//     dialect: "postgres",
-//   },
-//   {
-//     timestamps: false,
-//   }
-// );
-
 PORT = process.env.PORT || 8080;
 
 app.post("/make", (req, res) => {
   const make = req.body.make;
+  const category = req.body.category;
   const models = [];
-  for (const cl in workbook.Sheets["RAD"]) {
-    if (typeof workbook.Sheets["RAD"][cl].v === "string") {
-      if (workbook.Sheets["RAD"][cl].v.toLowerCase() === make.toLowerCase()) {
-        console.log(workbook.Sheets["RAD"]["B" + cl.substring(1, 3)].v);
-        models.push(workbook.Sheets["RAD"]["B" + cl.substring(1, 3)].v);
+  for (const cl in workbook.Sheets[category]) {
+    if (typeof workbook.Sheets[category][cl].v === "string") {
+      if (
+        workbook.Sheets[category][cl].v.toLowerCase() === make.toLowerCase()
+      ) {
+        models.push(workbook.Sheets[category]["B" + cl.substring(1, 3)].v);
       }
     }
   }
   res.json(models);
-
-  // .then((models) => res.json(models.map((model) => model.model)));
 });
 
 app.post("/part", (req, res) => {
-  const make = req.body.make,
+  console.log(req.body);
+  const make = req.body.make.toUpperCase(),
     model = req.body.model,
     category = req.body.category,
     year = req.body.year;
@@ -52,7 +39,6 @@ app.post("/part", (req, res) => {
   for (const cl in workbook.Sheets[category]) {
     if (workbook.Sheets[category][cl].v == make) {
       if (workbook.Sheets[category]["B" + cl.substring(1, 3)].v == model) {
-        console.log(workbook.Sheets[category]["C" + cl.substring(1, 3)].v);
         let years =
           workbook.Sheets[category]["C" + cl.substring(1, 3)].v.split("-");
 
@@ -60,7 +46,7 @@ app.post("/part", (req, res) => {
           Number(year) >= Number(years[0]) ||
           Number(year) <= Number(years[1])
         ) {
-          console.log(make, model, category, year);
+          // console.log(make, model, category, year);
           parts.push({
             make: workbook.Sheets[category][cl].v,
             model: workbook.Sheets[category]["B" + cl.substring(1, 3)].v,
@@ -75,29 +61,12 @@ app.post("/part", (req, res) => {
                 ? workbook.Sheets[category]["H" + cl.substring(1, 3)].v
                 : null,
           });
-          console.log({
-            make: workbook.Sheets[category][cl].v,
-            model: workbook.Sheets[category]["B" + cl.substring(1, 3)].v,
-            year: workbook.Sheets[category]["C" + cl.substring(1, 3)].v,
-            OEM: workbook.Sheets[category]["E" + cl.substring(1, 3)].v,
-            pic: workbook.Sheets[category]["G" + cl.substring(1, 3)].v,
-            price: workbook.Sheets[category]["H" + cl.substring(1, 3)].v,
-          });
         }
       }
     }
   }
-  console.log(JSON.stringify(parts));
-  res.json(JSON.stringify(parts));
-  // db.Finder.findAll({
-  //   where: {
-  //     make: make,
-  //     model: model,
-  //     category: category,
-  //     startYear: { [Op.lte]: year },
-  //     endYear: { [Op.gte]: year },
-  //   },
-  // }).then((parts) => res.json(parts));
+  console.log(parts);
+  res.json(parts);
 });
 
 app.post("/oem", (req, res) => {
